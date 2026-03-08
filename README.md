@@ -33,29 +33,11 @@ Wir nutzen eine PostgreSQL-Datenbank, die sauber gekapselt in einem Docker-Conta
 
 ## 4. Python-Umgebung einrichten
 
-Damit unser Python-Skript die Daten laden und transformieren kann, brauchen wir einige Bibliotheken. Wir nutzen dafür eine **virtuelle Umgebung (venv)**, damit die Pakete sauber vom Rest des Systems getrennt sind.
+Das Start-Script (`start_pipeline.bat` / `start_pipeline.sh`) übernimmt die Einrichtung der virtuellen Umgebung automatisch:
+- Beim **ersten Start** wird `.venv` erstellt und alle Pakete aus `requirements.txt` installiert.
+- Bei **jedem weiteren Start** wird die venv nur aktiviert und ggf. fehlende Pakete nachinstalliert.
 
-1. Gehe wieder in das VS Code Terminal.
-2. Erstelle eine virtuelle Umgebung im Projektordner:
-   ```bash
-   python -m venv .venv
-   ```
-3. Aktiviere die Umgebung:
-   * **Windows:**
-     ```bash
-     .venv\Scripts\activate
-     ```
-   * **Mac / Linux:**
-     ```bash
-     source .venv/bin/activate
-     ```
-   *(Du erkennst eine aktive venv daran, dass `(.venv)` am Anfang der Terminalzeile erscheint.)*
-4. Installiere alle benötigten Pakete:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-> **Hinweis:** Die venv muss jedes Mal aktiviert werden, wenn du ein neues Terminal öffnest. VS Code erkennt sie meist automatisch und aktiviert sie selbstständig.
+> **Für die manuelle Nutzung in VS Code** (z.B. für Notebooks): VS Code erkennt die `.venv` automatisch. Falls nicht, wähle den Interpreter manuell über `Strg+Shift+P` → *"Python: Select Interpreter"* → `.venv` auswählen.
 
 ## 5. Datenbank-Verbindung in VS Code (SQLTools)
 
